@@ -6,7 +6,7 @@ Built using ASP.Net Core 2
 Based on code from https://github.com/Microsoft/BotBuilder-Samples
 
 # To try this sample
-```
+
 - [Optional] Update the `appsettings.json` with your botFileSecret.  For Azure Bot Service bots, you can find the botFileSecret under application settings.
 
 # Running Locally
