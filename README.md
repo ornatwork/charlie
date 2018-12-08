@@ -1,7 +1,6 @@
 ﻿![alt text](robot-head.png) 
 
-Charlie is a bot that will answer to commands.
-Built using ASP.Net Core 2
+Charlie is a Microsoft Teams bot that will answer to different commands.
 
 Based on code from https://github.com/Microsoft/BotBuilder-Samples
 
@@ -30,14 +29,3 @@ developers to test and debug their bots on localhost or running remotely through
 - Select `charlie.bot` file.
 # Bot state
 A key to good bot design is to track the context of a conversation, so that your bot remembers things like the answers to previous questions. Depending on what your bot is used for, you may even need to keep track of conversation state or store user related information for longer than the lifetime of one given conversation.
-
-# Deploy this bot to Azure
-You can use the [MSBot](https://github.com/microsoft/botbuilder-tools) Bot Builder CLI tool to clone and configure any services this sample depends on. In order to install this and other tools, you can read [Installing CLI Tools](../../../Installing_CLI_tools.md).
-
-To clone this bot, run
-```bash
-msbot clone services -f deploymentScripts/msbotClone -n <BOT-NAME> -l <Azure-location> --subscriptionId <Azure-subscription-id> --appId <YOUR APP ID> --appSecret <YOUR APP SECRET PASSWORD>
-```
-
-**NOTE**: You can obtain your `appId` and `appSecret` at the Microsoft's [Application Registration Portal](https://apps.dev.microsoft.com/)
-
