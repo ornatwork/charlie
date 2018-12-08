@@ -28,11 +28,14 @@ namespace Charlie
         /// <summary>
         /// Gets weather forecast from location.
         /// </summary>
-        public static string GetWeather(string zip)
+        public static string GetWeather(string location)
         {
+            // API test url
+            //string url = "https://samples.openweathermap.org/data/2.5/weather?q=" + zip + ",us&appid=b6907d289e10d714a6e88b30761fae22";
+            // API us zip url
+            //string url = "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&APPID=d1437fe63b9165a5569c09489f6c69f8&units=Imperial";
             // API url
-            string url = "https://samples.openweathermap.org/data/2.5/weather?q=" + zip + ",us&appid=b6907d289e10d714a6e88b30761fae22";
-            //string url = "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&APPID=d1437fe63b9165a5569c09489f6c69f8";
+            string url = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=d1437fe63b9165a5569c09489f6c69f8&units=Imperial";
             string content = string.Empty;
 
             try
@@ -41,14 +44,17 @@ namespace Charlie
                 var client = new WebClient();
                 content = client.DownloadString(url);
                 // Deserialize json
-                //dynamic results = JsonConvert.DeserializeObject<dynamic>(content);
                 JObject json = JObject.Parse(content);
+                // Pick off the interesting weather bits
                 string where = (string)json["name"];
                 string description = (string)json["weather"][0]["description"];
                 string humidity = (string)json["main"]["humidity"];
+                string temp = (string)json["main"]["temp"];
+                string temp_low = (string)json["main"]["temp_min"];
+                string temp_high = (string)json["main"]["temp_max"];
 
                 // back to caller
-                content = where + ", " + description + ", humidity " + humidity;
+                content = where + ", " + description + ", temperature " + temp + ", low " + temp_low + ", high " + temp_high + ", humidity " + humidity;
             }
             catch (Exception ex)
             {

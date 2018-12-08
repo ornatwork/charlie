@@ -84,14 +84,14 @@ namespace Charlie
                 else if (turnContext.Activity.Text.ToLower().IndexOf("base64encode") == 0)
                 {
                     int where = "base64encode".Length;
-                    string textToEncode = turnContext.Activity.Text.Substring(where, turnContext.Activity.Text.Length - where);
+                    string textToEncode = turnContext.Activity.Text.Substring(where, turnContext.Activity.Text.Length - where).Trim();
                     responseMessage = "base 64 encoded=" + Util.Base64Encode(textToEncode) + Environment.NewLine;
                 }
                 // Decode Base64
                 else if (turnContext.Activity.Text.ToLower().IndexOf("base64decode") == 0)
                 {
                     int where = "base64decode".Length;
-                    string textToDecode = turnContext.Activity.Text.Substring(where, turnContext.Activity.Text.Length - where);
+                    string textToDecode = turnContext.Activity.Text.Substring(where, turnContext.Activity.Text.Length - where).Trim();
                     responseMessage = "your base64 decode=" + Util.Base64Decode(textToDecode) + Environment.NewLine;
                 }
                 // Random GUID 
@@ -103,7 +103,7 @@ namespace Charlie
                 else if (turnContext.Activity.Text.ToLower().IndexOf("weather") == 0)
                 {
                     int where = "weather".Length;
-                    string location = turnContext.Activity.Text.Substring(where, turnContext.Activity.Text.Length - where);
+                    string location = turnContext.Activity.Text.Substring(where, turnContext.Activity.Text.Length - where).Trim();
                     responseMessage = "Current weather in " + Util.GetWeather(location) + Environment.NewLine;
                 }
                 // Nothing to do here 
